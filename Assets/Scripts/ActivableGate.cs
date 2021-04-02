@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivableGate : MonoBehaviour
+public class ActivableGate : MonoBehaviour, IInteractable
 {
     public bool State { get; set; }
     [SerializeField] Material offMaterial;
@@ -32,5 +32,9 @@ public class ActivableGate : MonoBehaviour
     public void SwitchState()
     {
         SetStateTo(!State);
+    }
+    public void Interact()
+    {
+        SwitchState();
     }
 }
