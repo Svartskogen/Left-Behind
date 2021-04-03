@@ -13,6 +13,8 @@ public class Turret : MonoBehaviour
     public Material onMat;
     public Material offMat;
 
+    public GameObject muzzleFlashFX;
+
     Transform player;
     RoverLight roverLight;
 
@@ -43,7 +45,7 @@ public class Turret : MonoBehaviour
             }
             
         }
-        if(dist < trueVisionRange)
+        else if(dist < trueVisionRange)
         {
             RaycastHit hit;
             if (Physics.Raycast(axis.position + axis.forward, axis.forward, out hit, trueVisionRange, everythingLayer))
@@ -67,7 +69,8 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         RoverRespawn.RespawnRover();
-        Invoke(nameof(Reload), 0.2f);
+        Instantiate(muzzleFlashFX, axis.position, axis.rotation);
+        Invoke(nameof(Reload), 1f);
     }
     void Reload()
     {

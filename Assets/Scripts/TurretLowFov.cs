@@ -5,16 +5,20 @@ using UnityEngine;
 public class TurretLowFov : MonoBehaviour
 {
     public Transform axis;
+    public GameObject laser1;
+    public GameObject laser2;
     public float rotationSpeed;
     public MeshRenderer displayRenderer;
     public LayerMask everythingLayer;
 
     public Material onMat;
     public Material offMat;
+    
+    public GameObject muzzleFlashFX;
 
     Transform player;
 
-    const float RANGE = 5f;
+    const float RANGE = 5.5f;
     bool shoot;
     void Start()
     {
@@ -53,11 +57,18 @@ public class TurretLowFov : MonoBehaviour
     void Shoot()
     {
         RoverRespawn.RespawnRover();
-        Invoke(nameof(Reload), 0.2f);
+        var pos = laser1.transform.localPosition;
+        pos.z = 0;
+        Instantiate(muzzleFlashFX, axis.TransformPoint(pos), axis.rotation);
+        pos = laser2.transform.localPosition;
+        pos.z = 0;
+        Instantiate(muzzleFlashFX, axis.TransformPoint(pos), axis.rotation);
+        Invoke(nameof(Reload), 1f);
     }
     void Reload()
     {
         shoot = false;
+        axis.rotation = Quaternion.Euler(0, axis.rotation.eulerAngles.y, 0);
         displayRenderer.material = offMat;
     }
 }

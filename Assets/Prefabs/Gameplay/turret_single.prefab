@@ -107,6 +107,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   onMat: {fileID: 2100000, guid: 8bee39a72bcea094fb23a6ec2de1de94, type: 2}
   offMat: {fileID: 2100000, guid: 54060ba031abe5f42bf7dd176475e4e9, type: 2}
+  muzzleFlashFX: {fileID: 2446980594650855698, guid: c8c2a19ba95f83b43aa0a8f3196ac27c, type: 3}
 --- !u!65 &141364510947658749
 BoxCollider:
   m_ObjectHideFlags: 0

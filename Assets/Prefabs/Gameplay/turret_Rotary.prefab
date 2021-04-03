@@ -99,13 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: {fileID: 5539195886315496277}
-  rotationSpeed: 10
+  laser1: {fileID: 4272328188549802503}
+  laser2: {fileID: 4272328189738608745}
+  rotationSpeed: 60
   displayRenderer: {fileID: 4272328190373939456}
   everythingLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   onMat: {fileID: 2100000, guid: 8bee39a72bcea094fb23a6ec2de1de94, type: 2}
   offMat: {fileID: 2100000, guid: 54060ba031abe5f42bf7dd176475e4e9, type: 2}
+  muzzleFlashFX: {fileID: 2446980594650855698, guid: c8c2a19ba95f83b43aa0a8f3196ac27c, type: 3}
 --- !u!65 &4002347719655456954
 BoxCollider:
   m_ObjectHideFlags: 0
