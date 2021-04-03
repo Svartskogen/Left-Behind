@@ -8,6 +8,7 @@ public class ActivableGate : MonoBehaviour, IInteractable
     [SerializeField] Material offMaterial;
     [SerializeField] Material onMaterial;
     [SerializeField] bool initialState = false;
+    [SerializeField] bool isCheckpoint = false;
 
     MeshRenderer displayRenderer;
     private void Awake()
@@ -22,6 +23,10 @@ public class ActivableGate : MonoBehaviour, IInteractable
         if (state)
         {
             displayRenderer.material = onMaterial;
+            if (isCheckpoint)
+            {
+                RoverRespawn.respawnLocation = transform.position + transform.right;
+            }
         }
         else
         {

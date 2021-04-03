@@ -16,9 +16,11 @@ public class Turret : MonoBehaviour
     Transform player;
     RoverLight roverLight;
 
+    bool shoot;
     // Start is called before the first frame update
     void Start()
     {
+        shoot = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         roverLight = player.GetComponentInChildren<RoverLight>();
     }
@@ -28,17 +30,12 @@ public class Turret : MonoBehaviour
     {
         axis.LookAt(player.transform);
 
-        
-
-
-
         var dist = Vector3.Distance(transform.position, player.position);
         if (roverLight.light.enabled && dist < range)
         {
             RaycastHit hit;
             if (Physics.Raycast(axis.position + axis.forward, axis.forward, out hit, range, everythingLayer))
             {
-                Debug.Log(hit.transform.name);
                 if (hit.transform.CompareTag("Player"))
                 {
                     TryShoot();
@@ -58,14 +55,24 @@ public class Turret : MonoBehaviour
             }
         }
     }
-    public void TryShoot()
+    void TryShoot()
     {
-        displayRenderer.material = onMat;
-        Invoke(nameof(Shoot), 0.5f);
+        if (!shoot)
+        {
+            shoot = true;
+            displayRenderer.material = onMat;
+            Invoke(nameof(Shoot), 0.5f);
+        }
     }
-    public void Shoot()
+    void Shoot()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        RoverRespawn.RespawnRover();
+        Invoke(nameof(Reload), 0.2f);
+    }
+    void Reload()
+    {
+        shoot = false;
+        displayRenderer.material = offMat;
     }
     private void OnDrawGizmosSelected()
     {

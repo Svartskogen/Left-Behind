@@ -6,6 +6,7 @@ public class Gate : MonoBehaviour
 {
     public ActivableGate[] keys;
     public bool open = false;
+    public bool inverse = false;
 
     Vector3 closePos;
     Vector3 openPos;
@@ -45,13 +46,27 @@ public class Gate : MonoBehaviour
     }
     bool CheckKeys()
     {
-        foreach(ActivableGate key in keys)
+        if (inverse)
         {
-            if (!key.State)
+            foreach (ActivableGate key in keys)
             {
-                return false;
+                if (key.State)
+                {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
+        else
+        {
+            foreach (ActivableGate key in keys)
+            {
+                if (!key.State)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

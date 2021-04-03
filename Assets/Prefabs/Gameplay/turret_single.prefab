@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50550ee73e0b56943b41741f98ba26f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 7.7
+  range: 7
   trueVisionRange: 3
   axis: {fileID: 8836666110086129685}
   displayRenderer: {fileID: 4845384714964940148}

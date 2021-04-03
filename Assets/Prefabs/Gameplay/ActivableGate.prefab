@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3246538256689109648}
   m_Layer: 0
   m_Name: ActivableGate
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,3 +196,4 @@ MonoBehaviour:
   offMaterial: {fileID: 2100000, guid: 54060ba031abe5f42bf7dd176475e4e9, type: 2}
   onMaterial: {fileID: 2100000, guid: 8bee39a72bcea094fb23a6ec2de1de94, type: 2}
   initialState: 0
+  isCheckpoint: 0
