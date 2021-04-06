@@ -8,14 +8,21 @@ public class RocketPlatform : MonoBehaviour, IInteractable
     public Material onMaterial;
     public Material offMaterial;
 
+    public ParticleSystem smokeParticles;
+
     [SerializeField] MeshRenderer rocketBase;
     [SerializeField] MeshRenderer rocketFuel;
     [SerializeField] MeshRenderer rocketSides;
     [SerializeField] MeshRenderer rocketFins;
     [SerializeField] MeshRenderer rocketTop;
     
+    RocketFlameAnim flameAnim;
+    RocketPath rocketPath;
+
     void Awake()
     {
+        flameAnim = GetComponentInChildren<RocketFlameAnim>();
+        rocketPath = GetComponentInChildren<RocketPath>();
         rocketBase.enabled = false;
         rocketFuel.enabled = false;
         rocketSides.enabled = false;
@@ -43,8 +50,23 @@ public class RocketPlatform : MonoBehaviour, IInteractable
     {
         if (IsRocketComplete())
         {
+            CameraFollow.target = rocketFuel.gameObject;
+            smokeParticles.Play();
+            flameAnim.Ignite();
+            rocketPath.ignite = true;
+            rocketBase.transform.parent = null;
+            GameObject.FindGameObjectWithTag("Player").SetActive(false);
             //END GAME
         }
+    }
+    [ContextMenu("Complete rocket")]
+    public void CompleteRocket()
+    {
+        rocketBase.enabled = true;
+        rocketFuel.enabled = true;
+        rocketSides.enabled = true;
+        rocketFins.enabled = true;
+        rocketTop.enabled = true;
     }
     public void AddPart(RocketPart.Type partType)
     {
