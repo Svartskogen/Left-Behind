@@ -9,6 +9,7 @@ public class RocketPlatform : MonoBehaviour, IInteractable
     public Material offMaterial;
 
     public ParticleSystem smokeParticles;
+    public ScreenFade screenFade;
 
     [SerializeField] MeshRenderer rocketBase;
     [SerializeField] MeshRenderer rocketFuel;
@@ -50,14 +51,29 @@ public class RocketPlatform : MonoBehaviour, IInteractable
     {
         if (IsRocketComplete())
         {
-            CameraFollow.target = rocketFuel.gameObject;
-            smokeParticles.Play();
-            flameAnim.Ignite();
-            rocketPath.ignite = true;
-            rocketBase.transform.parent = null;
-            GameObject.FindGameObjectWithTag("Player").SetActive(false);
-            //END GAME
+            LaunchRocket();
         }
+    }
+
+    private void LaunchRocket()
+    {
+        CameraFollow.target = rocketFuel.gameObject;
+        smokeParticles.Play();
+        flameAnim.Ignite();
+        rocketPath.ignite = true;
+        rocketBase.transform.parent = null;
+        GameObject.FindGameObjectWithTag("Player").SetActive(false);
+        Invoke(nameof(SlowHideHook),3f);
+
+        Invoke(nameof(EndGame), 6f);
+    }
+    void SlowHideHook()
+    {
+        screenFade.SlowHide();
+    }
+    void EndGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
     [ContextMenu("Complete rocket")]
     public void CompleteRocket()

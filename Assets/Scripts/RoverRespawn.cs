@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoverRespawn : MonoBehaviour
 {
     public GameObject explosionDirtFX;
+    public ScreenFade screenFade;
     public static Vector3 respawnLocation;
     public static RoverRespawn instance;
 
@@ -25,6 +26,7 @@ public class RoverRespawn : MonoBehaviour
         Debug.Log("Respawn with delay start");
         movement.enabled = false;
         Instantiate(explosionDirtFX, transform.position, Quaternion.identity).SetActive(true);
+        screenFade.BlinkGraphic();
         Invoke(nameof(Respawn), 0.5f);
     }
     public static void RespawnRover() //metodo estatico llamado desde torretas y demas.
