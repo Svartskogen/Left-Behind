@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Simple physics based rover movement.
+/// Features inverse controls when going reverse.
+/// </summary>
 public class RoverMovement : MonoBehaviour
 {
     public float speed = 5f;
@@ -9,14 +13,13 @@ public class RoverMovement : MonoBehaviour
 
     Rigidbody rigidbody;
     Vector3 velocityHolder;
-    // Start is called before the first frame update
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         velocityHolder = Vector3.zero;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         velocityHolder = transform.forward * Input.GetAxis("Vertical") * speed;

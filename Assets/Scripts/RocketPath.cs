@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script based animation for the Rocket ascent path
+/// </summary>
 public class RocketPath : MonoBehaviour
 {
     [HideInInspector] public bool ignite = false;

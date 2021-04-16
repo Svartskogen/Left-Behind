@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enables the Rover to interact with Interactable elements nearby
+/// </summary>
 public class RoverInteraction : MonoBehaviour
 {
     public KeyCode interactKey;

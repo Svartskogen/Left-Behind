@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the Rocket Platform's visuals, and launches the Rocket
+/// </summary>
 public class RocketPlatform : MonoBehaviour, IInteractable
 {
-    public MeshRenderer display;
-    public Material onMaterial;
-    public Material offMaterial;
+    [SerializeField] MeshRenderer display;
+    [SerializeField] Material onMaterial;
+    [SerializeField] Material offMaterial;
 
-    public ParticleSystem smokeParticles;
-    public ScreenFade screenFade;
+    [SerializeField] ParticleSystem smokeParticles;
+    [SerializeField] ScreenFade screenFade;
 
     [SerializeField] MeshRenderer rocketBase;
     [SerializeField] MeshRenderer rocketFuel;

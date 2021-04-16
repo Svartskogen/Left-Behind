@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Alternate version of <see cref="Turret"/>, ignores player light but only sees in a straight line
+/// </summary>
 public class TurretLowFov : MonoBehaviour
 {
-    public Transform axis;
-    public GameObject laser1;
-    public GameObject laser2;
-    public float rotationSpeed;
-    public MeshRenderer displayRenderer;
-    public LayerMask everythingLayer;
+    [SerializeField] Transform axis;               //Turret rotation axis
+    [SerializeField] GameObject laser1;            //lasers gameObjects
+    [SerializeField] GameObject laser2;
+    [SerializeField] float rotationSpeed;          //Turret rotation speed
+    [SerializeField] MeshRenderer displayRenderer; //Turret HDR display
+    [SerializeField] LayerMask everythingLayer;    //Turret shoot colision layer, everything by default
 
-    public Material onMat;
-    public Material offMat;
-    
-    public GameObject muzzleFlashFX;
+    [SerializeField] Material onMat;               //Material used for the display when the turret shoots
+    [SerializeField] Material offMat;              //Material used for the display when the turret is looking for the target
+
+    [SerializeField] GameObject muzzleFlashFX;     //Turret muzzle shoot effect
 
     Transform player;
 

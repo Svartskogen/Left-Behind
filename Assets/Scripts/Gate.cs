@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Gate triggered by <see cref="ActivableGate"/>, supports multiple switches.
+/// </summary>
 public class Gate : MonoBehaviour
 {
-    public ActivableGate[] keys;
-    public bool open = false;
-    public bool inverse = false;
+    public ActivableGate[] keys;           //Switches needed to be true to open
+    [SerializeField] bool inverse = false; //Should this gate invert his behaviour?
 
+    bool open = false;
     Vector3 closePos;
     Vector3 openPos;
     float speed = 0.2f;
+
     private void Start()
     {
         closePos = transform.position;

@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Shows the Application's version in a text
+/// </summary>
 public class VersionText : MonoBehaviour
 {
     Text text;
-    // Start is called before the first frame update
+
     void Start()
     {
         text = GetComponent<Text>();
         text.text = Application.version;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

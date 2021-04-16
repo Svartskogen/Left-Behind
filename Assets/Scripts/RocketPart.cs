@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//al acercarse al jugador, se le equipa y se le asigna como padre. se activa modo carry
-//al estar en modo carry, si se acerca a una Rocket Platform se agrega ese tipo de parte
+/// <summary>
+/// Script used for collectable rocket parts.
+/// </summary>
 public class RocketPart : MonoBehaviour
 {
-    public Type type;
-    bool carring = false; //true si esta parte la esta llevando el jugador
+    public Type type; 
+    bool carring = false; //true if its being carried by the player
 
     float carrySizeModifier = 0.2f;
     SphereCollider collider;
@@ -26,11 +27,13 @@ public class RocketPart : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //If the item is in the world and his trigger touches the player, the RocketPart equips itself to the player
         if (!carring && other.gameObject.CompareTag("Player"))
         {
             Equip(other.gameObject);
             return;
         }
+        //If the RocketPart is being carried by the player and touches an Interactable object, checks if its the RocketPlatforms and adds itself to it
         if(carring && other.gameObject.CompareTag("Interactable"))
         {
             var platform = other.GetComponent<RocketPlatform>();
@@ -41,8 +44,6 @@ public class RocketPart : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        //if !carring and player: equip
-        //if carring and plaform: add
     }
     public enum Type
     {

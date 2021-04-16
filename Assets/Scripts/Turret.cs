@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Simple turret that shoots the player based on range and if he has lights on
+/// </summary>
 public class Turret : MonoBehaviour
 {
-    public float range = 4f;
-    public float trueVisionRange = 1;
-    public Transform axis;
-    public MeshRenderer displayRenderer;
-    public LayerMask everythingLayer;
+    [SerializeField] float range = 4f;            //Range at which the turret tries to shoot if the player has lights on
+    [SerializeField] float trueVisionRange = 1;   //Range at which the turret tries to shoot regardless of the player lights
+    [SerializeField] Transform axis;              //Turret rotation axis
+    [SerializeField] MeshRenderer displayRenderer;//Turret HDR display
+    [SerializeField] LayerMask everythingLayer;   //Turret shoot colision layer, everything by default
 
-    public Material onMat;
-    public Material offMat;
+    [SerializeField] Material onMat;              //Material used for the display when the turret shoots
+    [SerializeField] Material offMat;             //Material used for the display when the turret is looking for the target
 
-    public GameObject muzzleFlashFX;
+    [SerializeField] GameObject muzzleFlashFX;    //Turret muzzle shoot effect
 
     Transform player;
     RoverLight roverLight;
 
     bool shoot;
-    // Start is called before the first frame update
+
     void Start()
     {
         shoot = false;
@@ -27,7 +30,6 @@ public class Turret : MonoBehaviour
         roverLight = player.GetComponentInChildren<RoverLight>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         axis.LookAt(player.transform);

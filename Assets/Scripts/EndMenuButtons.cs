@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Generic UI buttons event handlers
+/// </summary>
 public class EndMenuButtons : MonoBehaviour
 {
-    public Type type;
+    [SerializeField] Type type;
     
     public void OnButton()
     {

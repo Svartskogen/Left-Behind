@@ -2,26 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages player death and respawn.
+/// </summary>
 public class RoverRespawn : MonoBehaviour
 {
-    public GameObject explosionDirtFX;
-    public ScreenFade screenFade;
     public static Vector3 respawnLocation;
     public static RoverRespawn instance;
+
+    [SerializeField] GameObject explosionDirtFX;
+    [SerializeField] ScreenFade screenFade;
 
     RoverMovement movement;
     void Awake()
     {
         movement = GetComponent<RoverMovement>();
-        respawnLocation = transform.position;
+        respawnLocation = transform.position;     //by default, the starting player position is the respawn position
         instance = this;
     }
-    void Respawn() //reaparece y reinicia los scripts.
+    //Teleports and enables the rover's movement.
+    void Respawn()
     {
         transform.position = respawnLocation;
         movement.enabled = true;
     }
-    public void RespawnWithDelay() //usado desde la instancia para matar al jugador con un delay.
+    /// <summary>
+    /// Used from the static instance to kill the player after a delay.
+    /// </summary>
+    public void RespawnWithDelay()
     {
         Debug.Log("Respawn with delay start");
         movement.enabled = false;
@@ -29,7 +37,10 @@ public class RoverRespawn : MonoBehaviour
         screenFade.BlinkGraphic();
         Invoke(nameof(Respawn), 0.5f);
     }
-    public static void RespawnRover() //metodo estatico llamado desde torretas y demas.
+    /// <summary>
+    /// Static method for cleaner code when requesting a respawn from other script.
+    /// </summary>
+    public static void RespawnRover()
     {
         instance.RespawnWithDelay();
     }

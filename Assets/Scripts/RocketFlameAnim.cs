@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script based animation for the rocket exhaust
+/// </summary>
 public class RocketFlameAnim : MonoBehaviour
 {
     MeshRenderer meshRenderer;
     bool ignite;
 
     Vector3 scaleCalc;
-    // Start is called before the first frame update
+    
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -17,7 +20,6 @@ public class RocketFlameAnim : MonoBehaviour
         scaleCalc = transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (ignite)
@@ -26,6 +28,10 @@ public class RocketFlameAnim : MonoBehaviour
             transform.localScale = scaleCalc;
         }
     }
+
+    /// <summary>
+    /// Starts the animation.
+    /// </summary>
     [ContextMenu("Ignite")]
     public void Ignite()
     {
