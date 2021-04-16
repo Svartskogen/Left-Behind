@@ -1,3 +1,5 @@
+<img src="https://media.svartskogen.com/leftbehind/mainTitle21.jpg" />
+
 # Left Behind
 Simple game made in about **15 hours** across 7 days, using the same **asset pack** ([Kenney Space Kit](https://www.kenney.nl/assets/space-kit)) as other 7 devs.
 
@@ -12,6 +14,12 @@ Simple game made in about **15 hours** across 7 days, using the same **asset pac
 ## Play
 You can download and play the game at [itch.io](https://svartskogen.itch.io/left-behind)
 ## Screenshots
+<img src="https://media.svartskogen.com/leftbehind/screen1.jpg" />
+<img src="https://media.svartskogen.com/leftbehind/screen2.jpg" />
+<img src="https://media.svartskogen.com/leftbehind/screen3.jpg" />
+<img src="https://media.svartskogen.com/leftbehind/screen4.jpg" />
+<img src="https://media.svartskogen.com/leftbehind/screen5.jpg" />
+<img src="https://media.svartskogen.com/leftbehind/screen6.jpg" />
 
 ## License
 
